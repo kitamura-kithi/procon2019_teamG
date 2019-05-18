@@ -2,3 +2,4 @@
 node_modules/
 */*.zip
 */*.txt
+booking_room_skill/auth.json

@@ -3,9 +3,14 @@ module.exports.LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
+    const ReserverExecSync = require('child_process').execSync;
+
+    const stdout = ReserverExecSync('node .\\reserver.js');
+    console.log(stdout);
+
     return handlerInput.responseBuilder
       .speak('6-502の予約を行いますか。それとも予約状況の確認を行いますか。')
-      .reprompt('選べ。')
+      .reprompt('stdout')
       .getResponse();
   },
 };
