@@ -2,15 +2,13 @@ module.exports.LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
-  handle(handlerInput) {
-    const ReserverExecSync = require('child_process').execSync;
-
-    const stdout = ReserverExecSync('node .\\reserver.js');
-    console.log(stdout);
-
+  async handle(handlerInput) {
+    const accessHIwiki = require('.\\access_HIwiki.js');
+    const wikiEditer = new accessHIwiki();
+    let res = await wikiEditer.reserve()
     return handlerInput.responseBuilder
       .speak('6-502の予約を行いますか。それとも予約状況の確認を行いますか。')
-      .reprompt('stdout')
+      .reprompt(res.headers['content-type'])
       .getResponse();
   },
 };
