@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-*/test/
-node_modules/
-*/*.zip
-*/*.txt
-booking_room_skill/auth.json
-=======
 node_modules/
 */auth.json
 authdata_server/
->>>>>>> cbe96d4... git rm -r --cached . を実行
